@@ -1,5 +1,6 @@
 ﻿using Bol.OpenAPI;
 using Bol.OpenAPI.Client;
+using OpenAPI_Client.Exception;
 using OpenAPI_Client.Request;
 using System;
 using System.Collections.Generic;
@@ -120,7 +121,7 @@ namespace Example
 
         static void GetProductRecommendations(OpenApiClient client)
         {
-            ProductRecommendationsRequest productRecommendationsRequest = new ProductRecommendationsRequest("1004004011412184a");
+            ProductRecommendationsRequest productRecommendationsRequest = new ProductRecommendationsRequest("1004004011412184");
             productRecommendationsRequest.IncludeProducts = true;
             productRecommendationsRequest.IncludeAttributes = true;
             productRecommendationsRequest.NrProducts = 10;
@@ -163,19 +164,19 @@ namespace Example
             Console.WriteLine("Session Id : " + sessionId);
             Console.WriteLine("----");
             Console.WriteLine("Performing AddItemToBasket");
-            client.AddItemToBasket(sessionId, 1004004011412184, 1, "127.0.0.1");
+            Console.WriteLine("Success : " + client.AddItemToBasket(sessionId, "1004004011412184", 1, "127.0.0.1"));
             BasketResponse basketResponse = client.GetBasket(sessionId);
             PrintBasket(basketResponse);
             Console.WriteLine("----");
-            Console.WriteLine("Performing ChangeItemQuantity: 7");
-            client.ChangeItemQuantity(sessionId, basketResponse.Basket.BasketItem[0].Id, 7);
+            Console.WriteLine("Performing ChangeItemQuantity to 7");
+            Console.WriteLine("Success : " + client.ChangeItemQuantity(sessionId, basketResponse.Basket.BasketItem[0].Id, 7));
             Console.WriteLine("----");
             Console.WriteLine("Performing GetBasket");
             basketResponse = client.GetBasket(sessionId);
             PrintBasket(basketResponse);
             Console.WriteLine("----");
             Console.WriteLine("Performing RemoveItemFromBasket");
-            client.RemoveItemFromBasket(sessionId, basketResponse.Basket.BasketItem[0].Id);
+            Console.WriteLine("Success : " + client.RemoveItemFromBasket(sessionId, basketResponse.Basket.BasketItem[0].Id));
             Console.WriteLine("----");
             Console.WriteLine("Performing GetBasket");
             basketResponse = client.GetBasket(sessionId);

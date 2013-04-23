@@ -426,8 +426,10 @@ namespace Bol.OpenAPI.Client
         /// <param name="offerId">The offer id.</param>
         /// <param name="quantity">The quantity.</param>
         /// <param name="ipAddress">The IP address.</param>
-        public void AddItemToBasket(string sessionId, Int64 offerId, Int32 quantity, string ipAddress)
+        public Boolean AddItemToBasket(string sessionId, String offerId, Int32 quantity, string ipAddress)
         {
+            Boolean result = false;
+
             // Prepare request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL_PREFIX + "/checkout/v3/baskets/" + offerId + "/" + quantity + "/" + ipAddress);
             request.Method = "POST";
@@ -438,6 +440,7 @@ namespace Bol.OpenAPI.Client
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
+                result = HttpStatusCode.Created == response.StatusCode;
             }
             catch (WebException e)
             {
@@ -448,6 +451,8 @@ namespace Bol.OpenAPI.Client
             {
                 if (response != null) response.Close();
             }
+
+            return result;
         }
 
         /// <summary>
@@ -455,8 +460,11 @@ namespace Bol.OpenAPI.Client
         /// </summary>
         /// <param name="sessionId">The session id.</param>
         /// <param name="basketItemId">The basket item id.</param>
-        public void RemoveItemFromBasket(string sessionId, string basketItemId)
+        /// <returns>Whether the item wasremoved or not.</returns>
+        public Boolean RemoveItemFromBasket(string sessionId, string basketItemId)
         {
+            Boolean result = false;
+
             // Prepare request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL_PREFIX + "/checkout/v3/baskets/" + basketItemId);
             request.Method = "DELETE";
@@ -467,6 +475,7 @@ namespace Bol.OpenAPI.Client
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
+                result = HttpStatusCode.OK == response.StatusCode;
             }
             catch (WebException e)
             {
@@ -477,10 +486,21 @@ namespace Bol.OpenAPI.Client
             {
                 if (response != null) response.Close();
             }
+
+            return result;
         }
 
-        public void ChangeItemQuantity(string sessionId, string basketItemId, Int32 quantity)
+        /// <summary>
+        /// Changes the item quantity in the basket.
+        /// </summary>
+        /// <param name="sessionId">The session id.</param>
+        /// <param name="basketItemId">The basket item id.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns>Whether the quantity was changed or not.</returns>
+        public Boolean ChangeItemQuantity(string sessionId, string basketItemId, Int32 quantity)
         {
+            Boolean result = false;
+
             // Prepare request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL_PREFIX + "/checkout/v3/baskets/" + basketItemId + "/" + quantity);
             request.Method = "PUT";
@@ -491,6 +511,7 @@ namespace Bol.OpenAPI.Client
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
+                result = HttpStatusCode.OK == response.StatusCode;
             }
             catch (WebException e)
             {
@@ -501,6 +522,8 @@ namespace Bol.OpenAPI.Client
             {
                 if (response != null) response.Close();
             }
+
+            return result;
         }
 
         /// <summary>
