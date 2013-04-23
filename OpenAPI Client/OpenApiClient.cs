@@ -54,8 +54,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -137,8 +144,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -216,8 +230,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -265,8 +286,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -328,8 +356,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -368,8 +403,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -408,8 +450,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -444,8 +493,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -479,8 +535,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -515,8 +578,15 @@ namespace Bol.OpenAPI.Client
             }
             catch (WebException e)
             {
-                response = (HttpWebResponse)e.Response;
-                throw ExceptionHandler.HandleBasicApiException(response);
+                if (e.Response != null)
+                {
+                    response = (HttpWebResponse)e.Response;
+                    throw ExceptionHandler.HandleBasicApiException(response);
+                }
+                else
+                {
+                    throw;
+                }
             }
             finally
             {
